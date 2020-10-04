@@ -1,0 +1,6 @@
+name: Test Module
+description: Test some example code.
+package: Custom
+
+type: module
+core: 8.x
