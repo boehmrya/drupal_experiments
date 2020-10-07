@@ -1,0 +1,7 @@
+test.content:
+  path: '/test-db'
+  defaults:
+    _controller: '\Drupal\test\Controller\TestDBController::content'
+    _title: 'Test DB'
+  requirements:
+    _permission: 'access content'
