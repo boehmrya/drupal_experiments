@@ -21,6 +21,7 @@
         "drupal/core-project-message": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/devel": "^4.0",
+        "drupal/examples": "^3.0",
         "drupal/token": "^1.7",
         "drush/drush": "^10.3"
     },
