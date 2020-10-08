@@ -9,6 +9,12 @@ use Drupal\Core\Controller\ControllerBase;
  */
 class TestDBController extends ControllerBase {
 
+  $query = \Drupal::entityQuery('node');
+  $query->condition('status', 1);
+  $query->condition('type', 'artice');
+  $article_list = $query->execute();
+  dpm($article_list);
+
   /**
    * Display the markup.
    *
