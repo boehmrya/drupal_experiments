@@ -9,11 +9,20 @@ use Drupal\Core\Controller\ControllerBase;
  */
 class TestDBController extends ControllerBase {
 
-  $query = \Drupal::entityQuery('node');
-  $query->condition('status', 1);
-  $query->condition('type', 'artice');
-  $article_list = $query->execute();
-  dpm($article_list);
+  /**
+   * Get a list of articles.
+   *
+   * @return array
+   *   Return array of articles.
+   */
+  public function getArticles() {
+    $query = \Drupal::entityQuery('node');
+    $query->condition('status', 1);
+    $query->condition('type', 'article');
+    $article_list = $query->execute();
+    dpm($article_list);
+  }
+
 
   /**
    * Display the markup.
@@ -24,7 +33,7 @@ class TestDBController extends ControllerBase {
   public function content() {
     return [
       '#type' => 'markup',
-      '#markup' => $this->t('Hello, Good Bye!'),
+      '#markup' => $this->getArticles(),
     ];
   }
 
