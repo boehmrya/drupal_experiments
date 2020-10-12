@@ -20,7 +20,7 @@ class TestDBController extends ControllerBase {
     $query->condition('status', 1);
     $query->condition('type', 'article');
     $article_list = $query->execute();
-    dpm($article_list);
+    //dpm($article_list);
     return $article_list;
   }
 
@@ -33,9 +33,9 @@ class TestDBController extends ControllerBase {
    */
   public function content() {
     return [
-      '#theme' => 'test_page',
-      '#test_articles' => $this->getArticles(),
-    ];
+     '#theme' => 'my_template',
+     '#test_var' => ['hello', 'world'],
+   ];
   }
 
 }
