@@ -12,3 +12,17 @@ function test_theme($existing, $type, $theme, $path) {
     ],
   ];
 }
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function test_preprocess_block(&$variables) {
+  $blocks = $variables['content'];
+  kpr($blocks);
+  /*
+  foreach ($blocks as $block) {
+    dpm($block);
+  }
+  */
+}
