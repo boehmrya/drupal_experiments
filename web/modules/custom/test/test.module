@@ -14,15 +14,8 @@ function test_theme($existing, $type, $theme, $path) {
 }
 
 
-/**
- * Implements hook_preprocess_HOOK().
- */
-function test_preprocess_block(&$variables) {
-  $blocks = $variables['content'];
-  kpr($blocks);
-  /*
-  foreach ($blocks as $block) {
-    dpm($block);
-  }
-  */
+function test_block_view_block_content_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+  dpm($build['#block']->label());
+  // Change the title of the specific block.
+  //$build['#block']['#settings']['label'] = t('New title of the block');
 }
