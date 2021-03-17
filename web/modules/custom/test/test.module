@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\Core\Render\Markup;
+use Drupal\block_content\Entity\BlockContent;
+
 /**
  * Implements hook_theme().
  */
@@ -13,9 +16,24 @@ function test_theme($existing, $type, $theme, $path) {
   ];
 }
 
+function test_block_content_view_alter(array &$build, BlockContent $custom_block) {
+  //dpm($build);
+  //dpm($custom_block);
 
-function test_block_view_block_content_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
-  dpm($build['#block']->label());
-  // Change the title of the specific block.
-  //$build['#block']['#settings']['label'] = t('New title of the block');
+  //$build['body'][0]['#text'] = '<p>New Text</p>';
+
+  if ($build['#view_mode'] == 'full') {
+
+    // Change its weight.
+    //$build['an_additional_field']['#weight'] = -10;
+
+    // Add a #post_render callback to act on the rendered HTML of the entity.
+    $build['#post_render'][] = '_test_block_post_render';
+  }
+}
+
+function _test_block_post_render($markup, $build) {
+  $markup = $markup . '<p>Test</p>';
+  return $markup;
+  dpm($markup);
 }
