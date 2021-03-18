@@ -28,8 +28,24 @@ function test_block_content_view_alter(array &$build, BlockContent $custom_block
     //$build['an_additional_field']['#weight'] = -10;
 
     // Add a #post_render callback to act on the rendered HTML of the entity.
-    $build['#post_render'][] = '_test_block_post_render';
+    //$build['#post_render'][] = '_test_block_post_render';
+    $build['#pre_render'][] = '_test_block_pre_render';
+
   }
+}
+
+function _test_block_pre_render($build) {
+
+  $build['simple'] = [
+    '#markup' => '<p>This page contains examples of various content elements described using render arrays. Read the code and comments in \Drupal\render_example\Controller\RenderExampleController::arrays() for more information</p>',
+    '#description' => 'Example of using #markup',
+    '#weight' => -10,
+  ];
+
+  $build['body']['#weight'] = -11;
+  dpm($build);
+
+  return $build;
 }
 
 function _test_block_post_render($markup, $build) {
