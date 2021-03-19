@@ -16,6 +16,7 @@ function test_theme($existing, $type, $theme, $path) {
   ];
 }
 
+/*
 function test_block_content_view_alter(array &$build, BlockContent $custom_block) {
   //dpm($build);
   //dpm($custom_block);
@@ -28,12 +29,14 @@ function test_block_content_view_alter(array &$build, BlockContent $custom_block
     //$build['an_additional_field']['#weight'] = -10;
 
     // Add a #post_render callback to act on the rendered HTML of the entity.
-    //$build['#post_render'][] = '_test_block_post_render';
-    $build['#pre_render'][] = '_test_block_pre_render';
+    $build['#post_render'][] = '_test_block_post_render';
+    //$build['#pre_render'][] = '_test_block_pre_render';
 
   }
 }
+*/
 
+/*
 function _test_block_pre_render($build) {
 
   $build['simple'] = [
@@ -43,7 +46,6 @@ function _test_block_pre_render($build) {
   ];
 
   $build['body']['#weight'] = -11;
-  dpm($build);
 
   return $build;
 }
@@ -51,5 +53,4 @@ function _test_block_pre_render($build) {
 function _test_block_post_render($markup, $build) {
   $markup = $markup . '<p>Test</p>';
   return $markup;
-  dpm($markup);
-}
+}*/
