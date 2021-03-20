@@ -54,3 +54,15 @@ function _test_block_post_render($markup, $build) {
   $markup = $markup . '<p>Test</p>';
   return $markup;
 }*/
+
+function test_block_content_presave(Drupal\Core\Entity\EntityInterface $entity) {
+
+  //dpm($entity->getFields());
+
+  $new_body = $entity->get('body')->getValue();
+  $old_body = $entity->original->get('body')->getValue();
+
+  if ($new_body != $old_body) {
+    // send email notification
+  }
+}
